@@ -1,0 +1,11 @@
+{
+  "files": {
+    "main.js": "/test_artisant/static/js/main.48ea8421.js",
+    "static/media/default-image.jpg": "/test_artisant/static/media/default-image.db90414850c04fe46929.jpg",
+    "index.html": "/test_artisant/index.html",
+    "main.48ea8421.js.map": "/test_artisant/static/js/main.48ea8421.js.map"
+  },
+  "entrypoints": [
+    "static/js/main.48ea8421.js"
+  ]
+}
