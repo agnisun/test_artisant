@@ -1,25 +1,34 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import axios from 'axios';
+import React, {useEffect} from 'react';
+import {Container, Header, SubTitle, Title} from "./styles/global";
+import {useAppDispatch} from "./store";
+import {setProducts} from "./store/product/product";
+import Filter from "./components/Filter/Filter";
+import Products from "./components/Products/Products";
 
 function App() {
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    (async () => {
+      const {data: {data}} = await axios.get('https://artisant.io/api/products')
+      dispatch(setProducts(data.products))
+    })()
+  })
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Container>
+      <Header>
+        <div>
+          <Title margin={'0 0 25px'}>Explore</Title>
+          <SubTitle>Buy and sell digital fashion NFT art</SubTitle>
+        </div>
+        <Filter/>
+      </Header>
+      <main>
+        <Products/>
+      </main>
+    </Container>
   );
 }
 
